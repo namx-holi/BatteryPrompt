@@ -1,4 +1,4 @@
-# BatteryPrompt
-Written in Bash for Linux Mint, however may work on other distros.
+# niceprompt
+This makes your terminal prompt look all pretty and rainbow! it's pretty easy to add things in to it if you follow the pattern.
 
-Displays the battery charge percentage in the prompt for a Linux terminal.
+Use niceprompt --off to turn it off :weary:
