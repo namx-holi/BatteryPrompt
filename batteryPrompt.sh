@@ -4,8 +4,9 @@
 # niceprompt #
 ##############
 
-# YOU CAN ADD THIS TO .bashrc OR SOMETHING, BUT IF YOU DO, READ
-# THE LAST LINE PLEASE?
+# YOU CAN ADD THIS TO .bashrc OR SOMETHING?
+# otherwise stick it somewhere and use source
+# maybe? but hey just add it to .bashrc it's RAD
 
 # declare defaults
 __default_prompt__=$PS1
@@ -29,12 +30,12 @@ niceprompt(){
 
     # if theres text after calling niceprompt, but its not --off
     # set the name to whatever is entered
-	elif [ "$@" != "" ]; then
+	elif [ "$1" != "" ]; then
 		__count__="0"
 		PROMPT_COMMAND='\
 PS1="${debian_chroot:+($debian_chroot)}\
 \[\033[${__colours__[$(((__count__+0*coloursplit)%6))]}\] [\t]\
-\[\033[${__colours__[$(((__count__+1*coloursplit)%6))]}\] $@\
+\[\033[${__colours__[$(((__count__+1*coloursplit)%6))]}\] '$@'\
 \[\033[${__colours__[$(((__count__+2*coloursplit)%6))]}\] \w\
 \[\033[${__colours__[$(((__count__+3*coloursplit)%6))]}\] \$\
 \[\033[00m\] ";__count__=$((__count__+1))'
@@ -46,15 +47,16 @@ PS1="${debian_chroot:+($debian_chroot)}\
 		PROMPT_COMMAND='\
 PS1="${debian_chroot:+($debian_chroot)}\
 \[\033[${__colours__[$(((__count__+0*coloursplit)%6))]}\] [\t]\
-\[\033[${__colours__[$(((__count__+1*coloursplit)%6))]}\] $__default_name__\
+\[\033[${__colours__[$(((__count__+1*coloursplit)%6))]}\] '$__default_name__'\
 \[\033[${__colours__[$(((__count__+2*coloursplit)%6))]}\] \w\
 \[\033[${__colours__[$(((__count__+3*coloursplit)%6))]}\] \$\
 \[\033[00m\] ";__count__=$((__count__+1))'
 	fi
 }
 
-# if you have added this to .bashrc or something and want to have
-# niceprompt turned on from the start, uncomment this line. you can
-# also change the name it sets it to rather than the default being
-# whatever your username is
-#niceprompt $__default_name__
+# this is mostly just for me but i keep typing nicrprompt accidentally so...
+alias nicrprompt=niceprompt
+
+# you can also change the name it sets it to rather
+# than the default being whatever your username is
+niceprompt
